@@ -1,0 +1,115 @@
+/* Colors & font-sizes */
+:root {
+    --clr-primary: #7b96ec;
+    --clr-accent: #a7bcff;
+    --clr-accent-light: #8da4f1;
+    --clr-neutral: #3e3c61; 
+    --clr-neutral-light: #5d5b8d; 
+    --clr-gray: rgb(175,175,175);
+
+    --ff-primary: "Be Vietnam Pro", sans-serif;
+    --ff-body: var(--ff-primary);
+    --ff-heading: var(--ff-primary);
+
+    --fw-regular: 400;
+    --fw-semi-bold: 500;
+    --fw-bold: 700;
+
+}
+
+* {
+    font-family: var(--ff-primary);
+}
+
+.wrapper {
+    
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-accent);
+    
+}
+
+.form { 
+    gap: 10px;
+    display: flex;
+    text-align: center;
+    padding: 20px 90px;
+    border-radius: 10px;
+    background: white;
+    flex-direction: column;
+
+    &__title{
+        color: var(--clr-neutral);
+        font-size: 1em;
+    }
+
+    &__logo {
+        color: var(--clr-neutral);
+        font-weight: bold;
+        font-size: 24px;
+    }
+    
+    form {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        input {
+            border:none;
+            padding: 15px;
+            border-bottom: 1px solid var(--clr-primary);
+            &::placeholder {
+                font-size: 16px;
+                color: var(--clr-gray);
+            }
+        }
+        
+        .file--input {
+            display: none;
+        }
+        
+        .file--label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            gap: 10px;
+            color: var(--clr-accent-light);
+            img{
+                width: 32px;
+            }
+        }
+        
+        button {
+            background-color: var(--clr-primary);
+            font-weight: bold;
+            color:white; 
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    }
+    &__switch {
+        color: var(--clr-neutral);
+        font-size: 16px;
+        margin-top: 10px;
+        .switch__link {
+            color: var(--clr-primary);
+            text-decoration: none;
+        }
+    }
+}
+.home {
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 65%;
+    height: 80%;
+    display: flex;  
+    overflow: hidden;
+    .sidebar {
+        flex : 1; 
+        border-right: 1px solid var(--clr-neutral-light);
+        background-color: var(--clr-neutral);
+    }    
+    .chat {flex : 2;}
+}
