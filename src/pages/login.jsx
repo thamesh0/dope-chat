@@ -7,7 +7,7 @@ export const Login = () => {
         <div className="form">
           <span className="form__logo">Lama Chat</span>
           <span className="form__title">Sign-up</span>
-          <form action="">
+          <form className="form__input" ction="">
             {/* Textfields */}
             <input type="email" placeholder="email" />
             <input type="password" placeholder="password" />

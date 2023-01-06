@@ -22,54 +22,53 @@
 }
 
 .wrapper {
-    
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--clr-accent);
     
-}
-
-.form { 
-    gap: 10px;
-    display: flex;
-    text-align: center;
-    padding: 20px 90px;
-    border-radius: 10px;
-    background: white;
-    flex-direction: column;
-
-    &__title{
-        color: var(--clr-neutral);
-        font-size: 1em;
-    }
-
-    &__logo {
-        color: var(--clr-neutral);
-        font-weight: bold;
-        font-size: 24px;
-    }
     
-    form {
-        gap: 15px;
+    .form { 
         display: flex;
         flex-direction: column;
-        input {
-            border:none;
-            padding: 15px;
-            border-bottom: 1px solid var(--clr-primary);
-            &::placeholder {
-                font-size: 16px;
-                color: var(--clr-gray);
-            }
+        text-align: center;
+        border-radius: 10px;
+        background: white;
+        padding: 20px 60px;
+        gap: 10px;
+        &__title{
+            color: var(--clr-neutral);
+            font-size: 1em;
         }
         
-        .file--input {
+        &__logo {
+            color: var(--clr-neutral);
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        &__input {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            input {
+                border:none;
+                padding: 15px;
+                border-bottom: 1px solid var(--clr-primary);
+                &::placeholder {
+                    font-size: 16px;
+                    text-align: start;
+                    color: var(--clr-gray);
+                }
+            }
+            
+        }
+        .file__input {
             display: none;
         }
         
-        .file--label {
+        .file__label {
             display: flex;
             align-items: center;
             font-size: 16px;
@@ -85,7 +84,7 @@
             font-weight: bold;
             color:white; 
             border: none;
-            padding: 10px;
+            padding: 15px;
             cursor: pointer;
         }
     }
