@@ -1,10 +1,18 @@
+// @import url('index.css');
+
 /* Colors & font-sizes */
 :root {
+    --clr-bg:#a7bcff;
+
     --clr-primary: #7b96ec;
+
     --clr-accent: #a7bcff;
     --clr-accent-light: #8da4f1;
+
     --clr-neutral: #3e3c61; 
-    --clr-neutral-light: #5d5b8d; 
+
+    --clr-text: #5d5b8d; 
+    --clr-link: #7b96ec;
     --clr-gray: rgb(175,175,175);
 
     --ff-primary: "Be Vietnam Pro", sans-serif;
@@ -21,94 +29,104 @@
     font-family: var(--ff-primary);
 }
 
-.wrapper {
+.auth_container {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--clr-accent);
+    background: var(--clr-accent); 
     
-    
-    .form { 
+    .auth_wrapper {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px 80px;
+
         display: flex;
         flex-direction: column;
-        text-align: center;
-        border-radius: 10px;
-        background: white;
-        padding: 20px 60px;
+        align-items: center;
         gap: 10px;
-        &__title{
-            color: var(--clr-neutral);
-            font-size: 1em;
-        }
-        
-        &__logo {
-            color: var(--clr-neutral);
+
+        .auth_logo {
+            color: var(--clr-text);
             font-weight: bold;
             font-size: 24px;
         }
+
+        .auth_title{
+            color: var(--clr-text);
+            font-size: 1em;
+        }
         
-        &__input {
+        .form { 
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            input {
-                border:none;
+            gap: 15px; 
+            
+            &_field {
                 padding: 15px;
-                border-bottom: 1px solid var(--clr-primary);
+                border: none;
+                width: 300px;
+                border-bottom: 1px solid var(--clr-accent);
                 &::placeholder {
-                    font-size: 16px;
-                    text-align: start;
                     color: var(--clr-gray);
                 }
+                &:focus {
+                    border: 2px solid var(--clr-accent);
+                    border-radius: 4px;
+                    outline: 0 none;
+                }
             }
-            
-        }
-        .file__input {
-            display: none;
-        }
-        
-        .file__label {
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            gap: 10px;
-            color: var(--clr-accent-light);
-            img{
-                width: 32px;
+            &_avatar {
+                display: none;
+            }
+            .avatar_label {
+                display: flex;
+                color: var(--clr-accent-light); 
+                align-items: center;
+                font-size: 12px;
+                gap: 10px;
+                img {
+                    width: 32px;
+                }
+            }
+            &_button {
+                cursor: pointer;
+                font-weight: bold;
+                color:#fff;
+                padding: 10px;
+                background-color: var(--clr-primary);
             }
         }
-        
-        button {
-            background-color: var(--clr-primary);
-            font-weight: bold;
-            color:white; 
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-        }
-    }
-    &__switch {
-        color: var(--clr-neutral);
-        font-size: 16px;
-        margin-top: 10px;
-        .switch__link {
-            color: var(--clr-primary);
-            text-decoration: none;
+        .auth_switch {
+            color: var(--clr-text);
+            font-size: 12px;
+            .switch_link {
+                color: var(--clr-link);
+                text-decoration: none;
+            }
         }
     }
 }
-.home {
-    border: 1px solid white;
-    border-radius: 10px;
-    width: 65%;
-    height: 80%;
-    display: flex;  
-    overflow: hidden;
-    .sidebar {
-        flex : 1; 
-        border-right: 1px solid var(--clr-neutral-light);
-        background-color: var(--clr-neutral);
-    }    
-    .chat {flex : 2;}
+
+.home_container {
+    background-color: var(--clr-accent);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .home {
+        border-radius: 10px;
+        border: 1px solid #fff;
+        width: 65%;     
+        height: 80%;
+        display: flex;
+        overflow: hidden;
+        .sidebar {
+            background-color: var(--clr-neutral);
+            flex:1;
+        }
+        .chat {
+            flex:2;
+        }
+    }
 }
