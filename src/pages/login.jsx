@@ -1,27 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 export const Login = () => {
-  return (
-    <div>
-      <div className="wrapper">
-        <div className="form">
-          <span className="form__logo">Lama Chat</span>
-          <span className="form__title">Sign-up</span>
-          <form className="form__input" ction="">
-            {/* Textfields */}
-            <input type="email" placeholder="email" />
-            <input type="password" placeholder="password" />
-            {/* Log-in Button */}
-            <button>Log in</button>
-          </form>
-          <p className="form__switch">
-            Already have an Account?{" "}
-            <Link className="switch__link" to="/sign-up">
-              Signup
-            </Link>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className='container'>
+			<div className='auth_wrapper'>
+				<span className='auth_logo'>Alpha Chat</span>
+				<span className='auth_title'>Log-in</span>
+				<form className='form' action=''>
+					{/* Textfields */}
+					<input className='form_field' type='email' placeholder='email' />
+
+					<input
+						className='form_field'
+						type='password'
+						placeholder='password'
+					/>
+
+					{/* Log-in Button */}
+					<button className='form_button'>Log in</button>
+				</form>
+
+				<p className='auth_switch'>
+					Already have an Account?{" "}
+					<Link className='switch_link' to='/sign-up'>
+						Signup
+					</Link>
+				</p>
+			</div>
+		</div>
+	);
 };
