@@ -1,8 +1,8 @@
 import "./css/style.scss";
 import { useState } from "react";
-import { Login } from "./pages/login";
-import { Signup } from "./pages/signup";
-import { Homepage } from "./pages/homepage";
+import { Login } from "./pages/Login";
+import { Signup } from "./pages/Signup";
+import { Homepage } from "./pages/Homepage";
 import { CheckAuth } from "./utlis/CheckAuth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./css/style.scss";

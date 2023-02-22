@@ -206,6 +206,7 @@
 			background-color: var(--clr-text-light);
 			.chat-info {
 				padding: 10px;
+				height: 50px;
 				background-color: var(--clr-text);
 				color: white;
 				display: flex;
@@ -213,6 +214,11 @@
 				justify-content: space-between;
 				.chat-icons {
 					display: flex;
+				}
+			}
+			.msg-list {
+				.msg-card {
+					color: #000;
 				}
 			}
 		}

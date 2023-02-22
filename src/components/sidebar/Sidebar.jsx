@@ -1,7 +1,7 @@
 import React from "react";
-import { Navbar } from "../components/Navbar";
-import { SearchBar } from "./SearchBar";
-import { ChatsList } from "./ChatsList";
+import { Navbar } from "../navbar/Navbar";
+import { SearchBar } from "./utlis/SearchBar";
+import { ChatsList } from "./utlis/ChatsList";
 export const Sidebar = () => {
 	return (
 		<div className='sidebar'>

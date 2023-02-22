@@ -1,12 +1,12 @@
 import React from "react";
-import { Chat } from "../components/Chat";
-import { Sidebar } from "../components/Sidebar";
+import { ChatScreen } from "../components/chat_screen/ChatScreen";
+import { Sidebar } from "../components/sidebar/Sidebar";
 export const Homepage = () => {
 	return (
 		<div className='home_container'>
 			<div className='home'>
 				<Sidebar />
-				<Chat />
+				<ChatScreen />
 			</div>
 		</div>
 	);

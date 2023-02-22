@@ -1,9 +1,11 @@
 import React from "react";
-import cam from "../assets/cam.png";
-import add from "../assets/add.png";
-import more from "../assets/more.png";
+import cam from "../../assets/cam.png";
+import add from "../../assets/add.png";
+import more from "../../assets/more.png";
+import { MsgList } from "./utlis/MsgList";
+import { MsgInput } from "./utlis/MsgInput";
 
-export const Chat = () => {
+export const ChatScreen = () => {
 	return (
 		<div className='chat'>
 			<div className='chat-info'>
@@ -14,6 +16,8 @@ export const Chat = () => {
 					<img src={more} alt='' />
 				</div>
 			</div>
+			<MsgList />
+			<MsgInput />
 		</div>
 	);
 };
