@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { ChatCard } from "./ChatCard";
 
 export const ChatsList = () => {
-	return <div>ChatsList</div>;
+	const chatsList = [];
+	for (let i = 0; i < 5; i++) {
+		chatsList.push(<ChatCard key={i} />);
+	}
+	return <div> {chatsList}</div>;
 };

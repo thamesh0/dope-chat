@@ -4,7 +4,9 @@ import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Homepage } from "./pages/homepage";
 import { CheckAuth } from "./utlis/CheckAuth";
-import { RouteProvider, BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./css/style.scss";
+
 function App() {
 	const [count, setCount] = useState(0);
 

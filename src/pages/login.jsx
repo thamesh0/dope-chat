@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 export const Login = () => {
 	return (
-		<div className='container'>
+		<div className='auth_container'>
 			<div className='auth_wrapper'>
-				<span className='auth_logo'>Alpha Chat</span>
+				<span className='auth_logo'>Dope Chat</span>
 				<span className='auth_title'>Log-in</span>
 				<form className='form' action=''>
 					{/* Textfields */}

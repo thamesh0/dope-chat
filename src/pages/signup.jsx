@@ -5,7 +5,7 @@ export const Signup = () => {
 	return (
 		<div className='auth_container'>
 			<div className='auth_wrapper'>
-				<span className='auth_logo'>Alpha Chat</span>
+				<span className='auth_logo'>Dope Chat</span>
 				<span className='auth_title'>Sign-up</span>
 
 				<form className='form' action=''>
@@ -26,7 +26,7 @@ export const Signup = () => {
 
 					{/* label takes an id and it becomes then becomes the label for the specified id */}
 					<label className='avatar_label' htmlFor='file'>
-						<img src='/src/assets/addAvatar.png' alt='Add avatar' />
+						<img src={addAvatar} alt='Add avatar' />
 						<span>Add an avatar</span>
 					</label>
 
