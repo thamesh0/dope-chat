@@ -173,7 +173,7 @@
 					}
 				}
 			}
-			.user-chat {
+			.chat-card {
 				&:hover {
 					background-color: var(--clr-darker);
 				}
@@ -181,7 +181,7 @@
 				align-items: center;
 				padding: 10px;
 				gap: 10px;
-				color: var(--clr-text-light);
+				color: white;
 				img {
 					height: 40px;
 					width: 40px;
@@ -190,7 +190,7 @@
 					object-fit: cover;
 				}
 
-				.user-info {
+				.card-info {
 					span {
 						font-size: 18px;
 						font-weight: 500;
@@ -202,6 +202,9 @@
 			}
 		}
 		.chat {
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
 			flex: 2.5;
 			background-color: var(--clr-text-light);
 			.chat-info {
@@ -216,9 +219,88 @@
 					display: flex;
 				}
 			}
+
 			.msg-list {
+				padding: 10px;
+				overflow: scroll;
+
 				.msg-card {
 					color: #000;
+					display: flex;
+					gap: 20px;
+					.msg-info {
+						display: flex;
+						flex-direction: column;
+						gap: 20px;
+						font-size: 14px;
+						font-weight: 300;
+						color: gray;
+						img {
+							height: 40px;
+							width: 40px;
+							border-radius: 50%;
+							object-fit: cover;
+						}
+					}
+
+					.msg-content {
+						color: black;
+						display: flex;
+						flex-direction: column;
+						max-width: 80%;
+						gap: 10px;
+						p {
+							background-color: white;
+							padding: 10px 20px;
+							border-radius: 0px 10px 10px 10px;
+							max-width: max-content;
+						}
+						img {
+							width: 50%;
+						}
+					}
+
+					&.owner {
+						flex-direction: row-reverse;
+						.msg-content {
+							align-items: flex-end;
+							p {
+								color: white;
+								background-color: var(--clr-accent);
+								border-radius: 10px 0 10px 10px;
+							}
+						}
+					}
+				}
+			}
+			.msg-input {
+				margin-top: auto;
+				padding: 10px;
+				height: 50px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background-color: white;
+				input {
+					width: 100%;
+					color: var(--clr-darker);
+					border: none;
+					outline: none;
+					font-size: 18px;
+					&::placeholder {
+						color: var(--clr-gray);
+					}
+				}
+				.send {
+					button {
+						padding: 10px 15px;
+						border: none;
+						background-color: var(--clr-accent);
+						color: white;
+					}
+					align-items: center;
+					display: flex;
+					gap: 10px;
 				}
 			}
 		}
