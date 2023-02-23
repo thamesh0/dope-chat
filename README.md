@@ -11,5 +11,5 @@
     git clone {repo-link}
     cd into the repo
     npm install
-    npm start
+    npm run dev
     Open http://localhost:5173 to view it in your browser.
