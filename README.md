@@ -2,6 +2,11 @@
 
 ## Description
     Chat Application created using reactJS & Firebase
+## Features
+    Encrypted Real-time Chats
+    Send Images & stickers
+    Cloud Syncing
+    Combines Phone no. & Email contacts
 ## Technologies Used
     ReactJS
     Vite
