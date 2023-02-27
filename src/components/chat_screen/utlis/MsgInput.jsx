@@ -1,17 +1,21 @@
 import React from "react";
 import Img from "/src/assets/img.png";
 import Attach from "/src/assets/attach.png";
+import styled from "styled-components";
+
+const HiddenLabel = styled.label`
+	display: none;
+`;
 
 export const MsgInput = () => {
 	return (
 		<div className='msg-input'>
 			<input type='text' placeholder='Type something...' />
 			<div className='send'>
-				<img src={Img} alt='' />
+				<img src={Attach} alt='' />
 				<input type='file' style={{ display: "none" }} id='attach-file' />
-				<label htmlFor='attach-file'>
-					<img src={Attach} alt='' />
-				</label>
+				<HiddenLabel htmlFor='attach-file'></HiddenLabel>
+				<img src={Img} alt='' />
 				<button>Send</button>
 			</div>
 		</div>
