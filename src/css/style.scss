@@ -95,46 +95,68 @@
 	justify-content: center;
 
 	.home {
+		width: 65%;
+		height: 85%;
 		border-radius: 16px;
 		overflow: hidden;
 
 		@include mobile {
 			width: 100%;
 			height: 100%;
+			border-radius: 0px;
+		}
+		@include tablet {
+			width: 90%;
+			height: 95%;
+		}
+		@include laptop {
+			width: 90%;
+			height: 85%;
 		}
 
 		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-		width: 65%;
-		height: 80%;
 		display: flex;
 		.sidebar {
+			overflow-x: hidden;
 			overflow-y: scroll;
+			position: relative;
 			background-color: $clr-dark;
 			border-right: 1px solid $clr-dark;
 			flex: 1;
 			.navbar {
-				position: sticky;
-				display: flex;
-				align-items: center;
 				height: 50px;
-				padding: 40px 10px;
-				background-color: $clr-darker;
+				display: flex;
+				padding: 40px 0px;
+				align-items: center;
 				color: $clr-text-light;
-				justify-content: space-between;
+				background-color: $clr-darker;
+				justify-content: space-around;
 				.logo {
 					font-weight: bold;
+					@include laptop {
+						display: none;
+					}
 				}
 
 				.user {
 					display: flex;
+					justify-content: space-between;
 					gap: 10px;
+					span {
+						@include tablet {
+							display: none;
+						}
+					}
 					img {
 						background-color: $clr-text-light;
 						height: 24px;
 						width: 24px;
 						object-fit: cover;
 						border-radius: 50%;
+						@include mobile {
+							display: none;
+						}
 					}
 					button {
 						cursor: pointer;
@@ -142,10 +164,16 @@
 						color: inherit;
 						font-size: 10px;
 						background-color: $clr-text;
+						@include mobile {
+							display: none;
+						}
 					}
 				}
 			}
 			.search {
+				@include mobile {
+					display: none;
+				}
 				border-bottom: 1px solid $clr-gray;
 				padding: 10px;
 				.search-form {
@@ -179,9 +207,17 @@
 						border-radius: 50%;
 						background-color: $clr-text-light;
 						object-fit: cover;
+						@include mobile {
+							height: 30px;
+							border-radius: 100%;
+							width: 30px;
+						}
 					}
 
 					.card-info {
+						@include mobile {
+							display: none;
+						}
 						span {
 							font-size: 18px;
 							font-weight: 500;
@@ -195,15 +231,14 @@
 		}
 
 		.chat {
-			@include mobile {
-				display: none;
-			}
-
+			flex: 2.5;
 			display: flex;
 			flex-direction: column;
 			align-items: stretch;
-			flex: 2.5;
 			background-color: $clr-text-light;
+			@include mobile {
+				flex: 4;
+			}
 			.chat-info {
 				padding: 40px 10px;
 				height: 50px;
