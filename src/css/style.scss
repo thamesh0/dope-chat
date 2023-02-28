@@ -222,8 +222,10 @@
 
 			.msg-list {
 				padding: 10px;
-				overflow: scroll;
-
+				overflow-y: overlay;
+				&::-webkit-scrollbar {
+					display: none;
+				}
 				.msg-card {
 					color: #000;
 					display: flex;
