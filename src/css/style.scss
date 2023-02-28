@@ -12,17 +12,21 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--clr-accent-light);
+	background: $clr-accent-light;
 
 	.auth_wrapper {
 		background-color: #fff;
 		border-radius: 10px;
 		padding: 20px 80px;
+		@include mobile {
+			width: 80%;
+			// padding: 20px;
+		}
 
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 10px;
+		gap: 20px;
 
 		.auth_logo {
 			color: $clr-text;
@@ -43,13 +47,13 @@
 			&_field {
 				padding: 15px;
 				border: none;
-				width: 300px;
-				border-bottom: 1px solid var(--clr-accent-light);
+				width: 100%;
+				border-bottom: 1px solid $clr-accent-light;
 				&::placeholder {
 					color: $clr-gray;
 				}
 				&:focus {
-					border: 2px solid var(--clr-accent-light);
+					border: 2px solid $clr-accent-light;
 					border-radius: 4px;
 					outline: 0 none;
 				}
@@ -72,14 +76,14 @@
 				font-weight: bold;
 				color: #fff;
 				padding: 10px;
-				background-color: var(--clr-primary);
+				background-color: $clr-primary;
 			}
 		}
 		.auth_switch {
-			color: var(--clr-text);
+			color: $clr-text;
 			font-size: 12px;
 			.switch_link {
-				color: var(--clr-link);
+				color: $clr-link;
 				text-decoration: none;
 			}
 		}
