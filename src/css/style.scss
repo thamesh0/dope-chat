@@ -1,35 +1,12 @@
-@import url("index.css");
-
-/* Colors & font-sizes */
-:root {
-	--clr-bg: #a7bcff;
-
-	--clr-primary: #7b96ec;
-
-	--clr-accent-light: #a7bcff;
-	--clr-accent: #8da4f1;
-
-	--clr-dark: #3e3c61;
-	--clr-darker: #2f2d52;
-
-	--clr-text: #5d5b8d;
-	--clr-text-light: #ddddf7;
-	--clr-link: #7b96ec;
-	--clr-gray: rgb(175, 175, 175);
-
-	--ff-primary: "Be Vietnam Pro", sans-serif;
-	--ff-body: var(--ff-primary);
-	--ff-heading: var(--ff-primary);
-
-	--fw-regular: 400;
-	--fw-semi-bold: 500;
-	--fw-bold: 700;
-}
+@import "colors";
+@import "mixins";
+@import "overlay-scrollbar";
 
 * {
-	font-family: var(--ff-primary);
+	font-family: $ff-primary;
 }
 
+// AUthpages CSS
 .auth_container {
 	height: 100vh;
 	display: flex;
@@ -48,13 +25,13 @@
 		gap: 10px;
 
 		.auth_logo {
-			color: var(--clr-text);
+			color: $clr-text;
 			font-weight: bold;
 			font-size: 24px;
 		}
 
 		.auth_title {
-			color: var(--clr-text);
+			color: $clr-text;
 			font-size: 1em;
 		}
 
@@ -69,7 +46,7 @@
 				width: 300px;
 				border-bottom: 1px solid var(--clr-accent-light);
 				&::placeholder {
-					color: var(--clr-gray);
+					color: $clr-gray;
 				}
 				&:focus {
 					border: 2px solid var(--clr-accent-light);
@@ -82,7 +59,7 @@
 			}
 			.avatar_label {
 				display: flex;
-				color: var(--clr-accent);
+				color: $clr-accent;
 				align-items: center;
 				font-size: 12px;
 				gap: 10px;
@@ -109,30 +86,41 @@
 	}
 }
 
+// Homepage css
 .home_container {
-	background-color: var(--clr-accent-light);
+	background-color: $clr-accent-light;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	.home {
-		border-radius: 10px;
-		width: 85%;
-		height: 90%;
-		display: flex;
+		border-radius: 16px;
 		overflow: hidden;
+
+		@include mobile {
+			width: 100%;
+			height: 100%;
+		}
+
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+		width: 65%;
+		height: 80%;
+		display: flex;
 		.sidebar {
-			background-color: var(--clr-dark);
-			border-right: 1px solid var(--clr-dark);
-			flex: 0.75;
+			overflow-y: scroll;
+			background-color: $clr-dark;
+			border-right: 1px solid $clr-dark;
+			flex: 1;
 			.navbar {
+				position: sticky;
 				display: flex;
 				align-items: center;
 				height: 50px;
-				padding: 10px;
-				background-color: var(--clr-darker);
-				color: var(--clr-text-light);
+				padding: 40px 10px;
+				background-color: $clr-darker;
+				color: $clr-text-light;
 				justify-content: space-between;
 				.logo {
 					font-weight: bold;
@@ -142,7 +130,7 @@
 					display: flex;
 					gap: 10px;
 					img {
-						background-color: var(--clr-text-light);
+						background-color: $clr-text-light;
 						height: 24px;
 						width: 24px;
 						object-fit: cover;
@@ -153,65 +141,76 @@
 						border: none;
 						color: inherit;
 						font-size: 10px;
-						background-color: var(--clr-text);
+						background-color: $clr-text;
 					}
 				}
 			}
 			.search {
-				border-bottom: 1px solid var(--clr-gray);
-				padding: 5px;
+				border-bottom: 1px solid $clr-gray;
+				padding: 10px;
 				.search-form {
 					input {
+						font-size: 0.9rem;
 						background-color: transparent;
 						border: none;
 						outline: none;
-						color: var(--clr-text-light);
+						color: $clr-text-light;
 
 						&::placeholder {
-							color: var(--clr-text-light);
+							color: $clr-text-light;
 						}
 					}
 				}
 			}
-			.chat-card {
-				&:hover {
-					background-color: var(--clr-darker);
-				}
-				display: flex;
-				align-items: center;
-				padding: 10px;
-				gap: 10px;
-				color: white;
-				img {
-					height: 40px;
-					width: 40px;
-					border-radius: 50%;
-					background-color: var(--clr-text-light);
-					object-fit: cover;
-				}
 
-				.card-info {
-					span {
-						font-size: 18px;
-						font-weight: 500;
+			.chats-list {
+				.chat-card {
+					&:hover {
+						background-color: $clr-darker;
 					}
-					p {
-						font-size: 14px;
+					display: flex;
+					align-items: center;
+					padding: 20px;
+					gap: 10px;
+					color: white;
+					img {
+						height: 40px;
+						width: 40px;
+						border-radius: 50%;
+						background-color: $clr-text-light;
+						object-fit: cover;
+					}
+
+					.card-info {
+						span {
+							font-size: 18px;
+							font-weight: 500;
+						}
+						p {
+							font-size: 14px;
+						}
 					}
 				}
 			}
 		}
+
 		.chat {
+			@include mobile {
+				display: none;
+			}
+
 			display: flex;
 			flex-direction: column;
 			align-items: stretch;
 			flex: 2.5;
-			background-color: var(--clr-text-light);
+			background-color: $clr-text-light;
 			.chat-info {
-				padding: 10px;
+				padding: 40px 10px;
 				height: 50px;
-				background-color: var(--clr-text);
-				color: white;
+				background-color: $clr-text;
+				color: $clr-text-light;
+				font-size: 22px;
+				font-weight: bold;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
@@ -222,10 +221,8 @@
 
 			.msg-list {
 				padding: 10px;
-				overflow-y: overlay;
-				&::-webkit-scrollbar {
-					display: none;
-				}
+				overflow-y: scroll;
+
 				.msg-card {
 					color: #000;
 					display: flex;
@@ -234,8 +231,8 @@
 						display: flex;
 						flex-direction: column;
 						gap: 20px;
-						font-size: 14px;
-						font-weight: 300;
+						font-size: 16px;
+						font-weight: 400;
 						color: gray;
 						img {
 							height: 40px;
@@ -268,7 +265,7 @@
 							align-items: flex-end;
 							p {
 								color: white;
-								background-color: var(--clr-accent);
+								background-color: $clr-primary;
 								border-radius: 10px 0 10px 10px;
 							}
 						}
@@ -277,7 +274,7 @@
 			}
 			.msg-input {
 				margin-top: auto;
-				padding: 10px;
+				padding: 40px;
 				height: 50px;
 				display: flex;
 				align-items: center;
@@ -285,24 +282,26 @@
 				background-color: white;
 				input {
 					width: 100%;
-					color: var(--clr-darker);
+					color: $clr-darker;
 					border: none;
 					outline: none;
 					font-size: 18px;
 					&::placeholder {
-						color: var(--clr-gray);
+						color: $clr-gray;
 					}
 				}
 				.send {
+					display: flex;
+					gap: 10px;
+					align-items: center;
+					padding: 20px;
+					justify-content: space-between;
 					button {
 						padding: 10px 15px;
 						border: none;
-						background-color: var(--clr-accent);
+						background-color: $clr-primary;
 						color: white;
 					}
-					align-items: center;
-					display: flex;
-					gap: 10px;
 				}
 			}
 		}
