@@ -1,11 +1,10 @@
 import React from "react";
-
-export const SearchBar = () => {
-	return (
-		<div className='search'>
-			<div className='search-form'>
-				<input type='text' placeholder='Find a User' />
-			</div>
+import { ChatCard } from "./ChatCard";
+export const SearchBar = () => (
+	<div className='search'>
+		<div className='search-form'>
+			<input type='text' placeholder='Find a User' />
 		</div>
-	);
-};
+		<ChatCard />
+	</div>
+);
