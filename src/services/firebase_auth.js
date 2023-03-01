@@ -5,14 +5,20 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const projectId = import.meta.env.VITE_PROJ_ID;
+const apiKey = import.meta.env.VITE_API_KEY;
+const messagingSenderId = import.meta.env.VITE_SENDER_ID;
+const appId = import.meta.env.APP_ID;
+const measurementId = import.meta.env.VITE_MEASUREMENT_ID;
+
 const firebaseConfig = {
-	authDomain: "chat-app-f03bd.firebaseapp.com",
-	projectId: "chat-app-f03bd",
-	storageBucket: "chat-app-f03bd.appspot.com",
-	apiKey: import.meta.env.VITE_API_KEY,
-	messagingSenderId: import.meta.env.VITE_SENDER_ID,
-	appId: import.meta.env.APP_ID,
-	measurementId: import.meta.env.VITE_MEASUREMENT_ID,
+	projectId: projectId,
+	authDomain: `${projectId}firebaseapp.com`,
+	storageBucket: `${projectId}.appspot.com`,
+	apiKey: apiKey,
+	messagingSenderId: messagingSenderId,
+	appId: appId,
+	measurementId: measurementId,
 };
 
 // Initialize Firebase
@@ -30,7 +36,7 @@ export const signUp = async (email, password) => {
 		return user;
 	} catch (err) {
 		let errMsg = "Something went wrong";
-		switch (err) {
+		switch (err.code) {
 			case "auth/invalid-email":
 				errMsg = "Invalid Email";
 				break;
@@ -39,9 +45,11 @@ export const signUp = async (email, password) => {
 				break;
 			case "auth/email-already-in-use":
 				errMsg = "Email is already in use";
+				break;
 			default:
 				console.log(err.message);
 		}
+		console.log(errMsg);
 		return errMsg;
 	}
 };

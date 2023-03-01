@@ -13,12 +13,13 @@ export const Signup = () => {
 		const password = e.target[2].value;
 		const displayImg = e.target[3].files[0];
 
-		const res = await signUp(email, password);
-		if (typeof res == "object") {
-			const uploadTask = await uploadOnSignup(res, username, displayImg);
+		const resAuth = await signUp(email, password);
+		if (typeof resAuth == "object") {
+			const resUpload = await uploadOnSignup(username, displayImg);
+			console.log(`upload response - ${resUpload}`);
 		} else {
 			setErr(true);
-			setErrMsg(res);
+			setErrMsg(resAuth);
 		}
 	};
 	return (
