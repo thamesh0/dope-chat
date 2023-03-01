@@ -15,6 +15,7 @@ export const Signup = () => {
 
 		const resAuth = await signUp(email, password);
 		if (typeof resAuth == "object") {
+			console.log(resAuth);
 			const resUpload = await uploadOnSignup(username, displayImg);
 			console.log(`upload response - ${resUpload}`);
 		} else {

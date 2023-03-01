@@ -13,8 +13,10 @@ export async function uploadOnSignup(username, displayImg) {
 
 	// Upload file and metadata to the object 'images/mountains.jpg'
 	const storageRef = ref(storage, username);
-
-	const uploadTask = uploadBytesResumable(storageRef, displayImg);
+	const metdata = {
+		"Access-Control-Allow-Origin": "*",
+	};
+	const uploadTask = uploadBytesResumable(storageRef, displayImg, metdata);
 	uploadTask.on(
 		"state_changed",
 		snapshot => {
@@ -28,6 +30,15 @@ export async function uploadOnSignup(username, displayImg) {
 					break;
 				case "running":
 					console.log("Upload is running");
+					break;
+				case "error":
+					console.log("Error");
+					break;
+				case "canceled":
+					console.log("Canceled");
+					break;
+				case "success":
+					console.log("Upload successful");
 					break;
 			}
 		},
