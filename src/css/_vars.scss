@@ -11,12 +11,18 @@ $clr-darker: #2f2d52;
 
 $clr-text: #5d5b8d;
 $clr-text-light: #ddddf7;
+$clr-error: #f67e7e;
 $clr-link: #7b96ec;
 $clr-gray: rgb(175, 175, 175);
 
 $ff-primary: "Be Vietnam Pro", sans-serif;
 $ff-body: $ff-primary;
 $ff-heading: $ff-primary;
+
+$fz-title: min(36px, calc(24px + 1vw));
+$fz-subtitle: min(24px, calc(20px + 1vw));
+$fz-medium: min(18px, calc(16px + 1vw));
+$fz-small: min(14px, calc(12px + 1vw));
 
 $fw-regular: 400;
 $fw-semi-bold: 500;

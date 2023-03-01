@@ -1,4 +1,4 @@
-@import "colors";
+@import "vars";
 @import "mixins";
 @import "overlay-scrollbar";
 
@@ -17,12 +17,11 @@
 	.auth_wrapper {
 		background-color: #fff;
 		border-radius: 10px;
-		padding: 20px 80px;
+		padding: 20px 60px;
 		@include mobile {
-			width: 80%;
-			// padding: 20px;
+			width: 90%;
+			padding: 20px;
 		}
-
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -31,28 +30,39 @@
 		.auth_logo {
 			color: $clr-text;
 			font-weight: bold;
-			font-size: 24px;
+			font-size: $fz-title;
 		}
 
 		.auth_title {
 			color: $clr-text;
-			font-size: 1em;
+			font-size: $fz-subtitle;
 		}
 
 		.form {
+			width: 400px;
+			@include tablet {
+				width: 300px;
+			}
+			@include mobile {
+				width: 80%;
+			}
 			display: flex;
 			flex-direction: column;
 			gap: 15px;
 
 			&_field {
-				padding: 15px;
+				@include mobile {
+					width: 100%;
+				}
 				border: none;
-				width: 100%;
+				padding: 20px 5px;
 				border-bottom: 1px solid $clr-accent-light;
+				font-size: $fz-medium;
 				&::placeholder {
 					color: $clr-gray;
 				}
 				&:focus {
+					padding: 20px 15px;
 					border: 2px solid $clr-accent-light;
 					border-radius: 4px;
 					outline: 0 none;
@@ -65,23 +75,30 @@
 				display: flex;
 				color: $clr-accent;
 				align-items: center;
-				font-size: 12px;
 				gap: 10px;
 				img {
 					width: 32px;
+				}
+				span {
+					font-size: $fz-small;
 				}
 			}
 			&_button {
 				cursor: pointer;
 				font-weight: bold;
+				font-size: 1.3rem;
 				color: #fff;
 				padding: 10px;
 				background-color: $clr-primary;
 			}
+			&_error {
+				text-align: center;
+				color: $clr-error;
+			}
 		}
 		.auth_switch {
 			color: $clr-text;
-			font-size: 12px;
+			font-size: $fz-small;
 			.switch_link {
 				color: $clr-link;
 				text-decoration: none;

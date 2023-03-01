@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import addAvatar from "../assets/addAvatar.png";
+import { signUp } from "../services/firebase_auth";
+import { uploadOnSignup } from "../services/firebase_storage";
 export const Signup = () => {
+	const [err, setErr] = useState(false);
+	const [errMsg, setErrMsg] = useState("error");
+	const handleSubmit = async e => {
+		e.preventDefault();
+		const username = e.target[0].value;
+		const email = e.target[1].value;
+		const password = e.target[2].value;
+		const displayImg = e.target[3].files[0];
+
+		const res = await signUp(email, password);
+		if (typeof res == "object") {
+			const uploadTask = await uploadOnSignup(res, username, displayImg);
+		} else {
+			setErr(true);
+			setErrMsg(res);
+		}
+	};
 	return (
 		<div className='auth_container'>
 			<div className='auth_wrapper'>
 				<span className='auth_logo'>Dope Chat</span>
 				<span className='auth_title'>Sign-up</span>
 
-				<form className='form' action=''>
+				<form className='form' onSubmit={handleSubmit}>
 					{/* Textfields */}
 					<input
 						type='text'
@@ -32,6 +51,7 @@ export const Signup = () => {
 
 					{/* Sign-up Button */}
 					<button className='form_button'>Sign-up</button>
+					<span className='form_error'>{err ? errMsg : ""}</span>
 				</form>
 
 				{/* Switch to Login */}
