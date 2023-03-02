@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import addAvatar from "../assets/addAvatar.png";
 import { signUp } from "../services/firebase_auth";
-import { uploadOnSignup } from "../services/firebase_storage";
+import { uploadImage } from "../services/firebase_storage";
 export const Signup = () => {
-	const [err, setErr] = useState(false);
-	const [errMsg, setErrMsg] = useState("error");
+	const [errMsg, setErrMsg] = useState("");
 	const handleSubmit = async e => {
 		e.preventDefault();
+		setErrMsg("");
 		const username = e.target[0].value;
 		const email = e.target[1].value;
 		const password = e.target[2].value;
@@ -16,10 +16,11 @@ export const Signup = () => {
 		const resAuth = await signUp(email, password);
 		if (typeof resAuth == "object") {
 			console.log(resAuth);
-			const resUpload = await uploadOnSignup(username, displayImg);
+
+			// [ ]: Implement Pause & Cancel Functionality
+			const resUpload = await uploadImage(resAuth.uid, displayImg);
 			console.log(`upload response - ${resUpload}`);
 		} else {
-			setErr(true);
 			setErrMsg(resAuth);
 		}
 	};
@@ -53,7 +54,7 @@ export const Signup = () => {
 
 					{/* Sign-up Button */}
 					<button className='form_button'>Sign-up</button>
-					<span className='form_error'>{err ? errMsg : ""}</span>
+					<span className='form_error'>{errMsg}</span>
 				</form>
 
 				{/* Switch to Login */}
