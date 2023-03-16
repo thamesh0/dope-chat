@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import addAvatar from "../assets/addAvatar.png";
 import { signUp } from "../services/firebase_auth";
 import { uploadImage } from "../services/firebase_storage";
 
 export const Signup = () => {
 	const [errMsg, setErrMsg] = useState("");
+	const [avatar, setAvatar] = useState();
+	const navigate = useNavigate();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setErrMsg("");
+
 		const username = e.target[0].value;
 		const email = e.target[1].value;
 		const password = e.target[2].value;
@@ -19,12 +24,19 @@ export const Signup = () => {
 			console.log(resAuth);
 
 			// [ ]: Implement Pause & Cancel Functionality
-			const resUpload = await uploadImage(resAuth.uid, displayImg);
+			await uploadImage(resAuth.uid, displayImg);
+			const resUpload = await getProfilePhoto(resAuth.uid, displayImg);
 			console.log(`upload response - ${resUpload}`);
+			navigate("/home");
 		} else {
 			setErrMsg(resAuth);
 		}
 	};
+
+	function handleSelectAvatar(e) {
+		if (e.target.files[0]) setAvatar(URL.createObjectURL(e.target.files[0]));
+	}
+
 	return (
 		<div className="auth_container">
 			<div className="auth_wrapper">
@@ -44,14 +56,26 @@ export const Signup = () => {
 						type="password"
 						placeholder="password"
 					/>
-					{/* file Input */}
-					<input id="file" type="file" className="form_avatar" />
 
+					{/* file Input */}
+					<input
+						onChange={handleSelectAvatar}
+						id="file"
+						type="file"
+						className="form_avatar"
+					/>
 					{/* label takes an id and it becomes then becomes the label for the specified id */}
 					<label className="avatar_label" htmlFor="file">
 						<img src={addAvatar} alt="Add avatar" />
 						<span>Add an avatar</span>
 					</label>
+
+					{/* [ x ]: selected file preview */}
+					<img
+						src={avatar}
+						alt=""
+						className={`${avatar ? "" : "form_avatar"} img_preview`}
+					/>
 
 					{/* Sign-up Button */}
 					<button className="form_button">Sign-up</button>

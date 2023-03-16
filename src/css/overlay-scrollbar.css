@@ -1,0 +1,23 @@
+/* Overlay scrollbars */
+*::-webkit-scrollbar {
+  display: block;
+  width: 12px;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #00000000;
+}
+
+*::-webkit-scrollbar-track-piece {
+  background-color: #00000000;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 0%, 0.275);
+  border: 1px solid #ffffff40;
+  border-radius: 24px;
+}

@@ -6,5 +6,5 @@ export const ChatsList = () => {
 	for (let i = 0; i < 14; i++) {
 		chatsList.push(<ChatCard key={i} />);
 	}
-	return <div className='chats-list'> {chatsList}</div>;
+	return <div className="chats-list"> {chatsList}</div>;
 };
