@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import addAvatar from "../assets/addAvatar.png";
+import { uploadImage } from "../services/firebase_storage";
 import { signUp } from "../services/firebase_auth";
-import { uploadImage, getProfilePhoto } from "../services/firebase_storage";
+import addAvatar from "../assets/addAvatar.png";
 export const Signup = () => {
   const [errMsg, setErrMsg] = useState("");
   const [avatar, setAvatar] = useState();
@@ -12,7 +12,6 @@ export const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrMsg("");
-
     const username = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
@@ -23,10 +22,9 @@ export const Signup = () => {
       console.log(resAuth);
 
       // [ ]: Implement Pause & Cancel Functionality
-      await uploadImage(resAuth.uid, displayImg);
-      const resUpload = await getProfilePhoto(resAuth.uid, displayImg);
-      console.log(`upload response - ${resUpload}`);
-      navigate("/home");
+      const downloadURL = await uploadImage(resAuth.uid, displayImg);
+      console.log(`upload response - ${downloadURL}`);
+      // navigate("/home");
     } else {
       setErrMsg(resAuth);
     }
