@@ -6,29 +6,46 @@ import { signUp } from "../services/firebase_auth";
 import addAvatar from "../assets/addAvatar.png";
 
 export const Signup = () => {
-	const [errMsg, setErrMsg] = useState("");
-	const [avatar, setAvatar] = useState();
+	// Navigate to links
 	const navigate = useNavigate();
+
+	// Error Msgs
+	const [ServerErr, setServerErr] = useState("");
+	const [ClientEmailErr, setClientEmailErr] = useState("");
+	const [ClientPassErr, setClientPassErr] = useState("");
+	const [ClientNameErr, setClientNameErr] = useState("");
+
+	const [avatar, setAvatar] = useState();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setErrMsg("");
-
 		const username = e.target[0].value;
 		const email = e.target[1].value;
 		const password = e.target[2].value;
 		const displayImg = e.target[3].files[0];
+		var downloadURL = "";
 
-		const resAuth = await signUp(email, password);
-		if (typeof resAuth == "object") {
-			console.log(resAuth);
-
-			// [ ]: Implement Pause & Cancel Functionality
-			const downloadURL = await uploadImage(resAuth.uid, displayImg);
-			console.log(`upload response - ${downloadURL}`);
-			// navigate("/home");
+		if (username == "") {
+			setClientNameErr("Username can't be empty");
+		}
+		if (password == "") {
+			setClientPassErr("Choose a password");
+		}
+		if (email == "") {
+			setClientEmailErr("Email can't be empty");
 		} else {
-			setErrMsg(resAuth);
+			// Create an Account
+			const resAuth = await signUp(email, password);
+
+			// On Successful
+			if (typeof resAuth == "object") {
+				console.log(resAuth);
+
+				// [ ]: Implement Pause & Cancel Functionality
+				const status = await uploadImage(resAuth.uid, displayImg, downloadURL);
+			} else {
+				setServerErr(resAuth);
+			}
 		}
 	};
 
@@ -49,12 +66,17 @@ export const Signup = () => {
 						className="form_field"
 						placeholder="display name"
 					/>
+					<span className="form_error form_client_error">{ClientNameErr}</span>
+
 					<input className="form_field" type="email" placeholder="email" />
+					<span className="form_error form_client_error">{ClientEmailErr}</span>
+
 					<input
 						className="form_field"
 						type="password"
 						placeholder="password"
 					/>
+					<span className="form_error form_client_error">{ClientPassErr}</span>
 
 					{/* file Input */}
 					<input
@@ -78,7 +100,7 @@ export const Signup = () => {
 
 					{/* Sign-up Button */}
 					<button className="form_button">Sign-up</button>
-					<span className="form_error">{errMsg}</span>
+					<span className="form_error">{ServerErr}</span>
 				</form>
 
 				{/* Switch to Login */}
