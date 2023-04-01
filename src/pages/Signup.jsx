@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { uploadImage } from "../services/firebase_storage";
 import { signUp } from "../services/firebase_auth";
 import addAvatar from "../assets/addAvatar.png";
-import { uploadImage } from "../services/firebase_storage";
 
 export const Signup = () => {
 	const [errMsg, setErrMsg] = useState("");
