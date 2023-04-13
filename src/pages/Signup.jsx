@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { uploadImage } from "../services/firebase_storage";
+import { createUser } from "../services/firebase_database";
 import { signUp } from "../services/firebase_auth";
 import addAvatar from "../assets/addAvatar.png";
 
@@ -10,10 +11,10 @@ export const Signup = () => {
 	const navigate = useNavigate();
 
 	// Error Msgs
-	const [ServerErr, setServerErr] = useState("");
-	const [ClientEmailErr, setClientEmailErr] = useState("");
-	const [ClientPassErr, setClientPassErr] = useState("");
-	const [ClientNameErr, setClientNameErr] = useState("");
+	const [serverErr, setServerErr] = useState("");
+	const [clientEmailErr, setClientEmailErr] = useState("");
+	const [clientPassErr, setClientPassErr] = useState("");
+	const [clientNameErr, setClientNameErr] = useState("");
 
 	const [avatar, setAvatar] = useState();
 
@@ -22,8 +23,7 @@ export const Signup = () => {
 		const username = e.target[0].value;
 		const email = e.target[1].value;
 		const password = e.target[2].value;
-		const displayImg = e.target[3].files[0];
-		var downloadURL = "";
+		const displayImg = avatar;
 
 		if (username == "") {
 			setClientNameErr("Username can't be empty");
@@ -41,8 +41,18 @@ export const Signup = () => {
 			if (typeof resAuth == "object") {
 				console.log(resAuth);
 
-				// [ ]: Implement Pause & Cancel Functionality
-				const status = await uploadImage(resAuth.uid, displayImg, downloadURL);
+				// [ ]: Implement Loading During Upload
+				// [ ]: Implement Delete Selected Image feature
+
+				// if DisplayImage not Selected use default Image
+				if (displayImg != "") {
+					const downloadURL = await uploadImage(resAuth.uid, displayImg);
+					console.log(`upload res - ${downloadURL}`); // true
+
+					// upload User Data
+					await createUser(resAuth.uid, username, email, downloadURL);
+					navigate("/home");
+				}
 			} else {
 				setServerErr(resAuth);
 			}
@@ -66,17 +76,17 @@ export const Signup = () => {
 						className="form_field"
 						placeholder="display name"
 					/>
-					<span className="form_error form_client_error">{ClientNameErr}</span>
+					<span className="form_error form_client_error">{clientNameErr}</span>
 
 					<input className="form_field" type="email" placeholder="email" />
-					<span className="form_error form_client_error">{ClientEmailErr}</span>
+					<span className="form_error form_client_error">{clientEmailErr}</span>
 
 					<input
 						className="form_field"
 						type="password"
 						placeholder="password"
 					/>
-					<span className="form_error form_client_error">{ClientPassErr}</span>
+					<span className="form_error form_client_error">{clientPassErr}</span>
 
 					{/* file Input */}
 					<input
@@ -100,7 +110,7 @@ export const Signup = () => {
 
 					{/* Sign-up Button */}
 					<button className="form_button">Sign-up</button>
-					<span className="form_error">{ServerErr}</span>
+					<span className="form_error">{serverErr}</span>
 				</form>
 
 				{/* Switch to Login */}
