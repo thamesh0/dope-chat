@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
-const auth = getAuth();
+export const auth = getAuth();
+
 export const signUp = async (email, password) => {
 	try {
 		const userCreds = await createUserWithEmailAndPassword(

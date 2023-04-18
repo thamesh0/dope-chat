@@ -5,6 +5,7 @@ import { Signup } from "./pages/Signup";
 import { Homepage } from "./pages/Homepage";
 import { CheckAuth } from "./utlis/CheckAuth";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { AuthContextProvider } from "./services/auth_context";
 
 function App() {
 	const router = createBrowserRouter([
@@ -33,7 +34,9 @@ function App() {
 
 	return (
 		<div className="app">
-			<RouterProvider router={router} />
+			<AuthContextProvider>
+				<RouterProvider router={router} />
+			</AuthContextProvider>
 		</div>
 	);
 }
