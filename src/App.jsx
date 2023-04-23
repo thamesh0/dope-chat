@@ -1,43 +1,65 @@
 import "./css/style.scss";
-import { useState } from "react";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { Homepage } from "./pages/Homepage";
-import { CheckAuth } from "./utlis/CheckAuth";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { AuthContextProvider } from "./services/auth_context";
+import {
+	RouterProvider,
+	createBrowserRouter,
+	createRoutesFromElements,
+	BrowserRouter,
+	Routes,
+	Route,
+	Navigate,
+} from "react-router-dom";
+import { AuthContext } from "./utlis/AuthContext";
+import { useContext } from "react";
 
 function App() {
-	const router = createBrowserRouter([
-		{ path: "/", element: <CheckAuth /> },
-		{
-			path: "/sign-up",
-			element: <Signup />,
-		},
-		{
-			path: "/log-in",
-			element: <Login />,
-		},
-		{
-			path: "/home",
-			element: <Homepage />,
-		},
-		// {
-		//   path: "/verification",
-		//   element: <Verfication />,
-		// },
-		// {
-		//   path: "/test",
-		//   element: <Test />,
-		// },
-	]);
+	const { currentUser } = useContext(AuthContext);
+	console.log(`current user - ${currentUser}`);
+
+	const ProtectedRoute = ({ children }) => {
+		if (!currentUser) {
+			return <Navigate to="/login" />;
+		}
+		return children;
+	};
+
+	// const router = createBrowserRouter(
+	// 	createRoutesFromElements(
+	// 		<Route path="/">
+	// 			<Route
+	// 				index
+	// 				element={
+	// 					<ProtectedRoute>
+	// 						<Homepage />
+	// 					</ProtectedRoute>
+	// 				}
+	// 			/>
+	// 			<Route path="login" element={<Login />} />
+	// 			<Route path="signup" element={<Signup />} />
+	// 		</Route>
+	// 	)
+	// );
 
 	return (
-		<div className="app">
-			<AuthContextProvider>
-				<RouterProvider router={router} />
-			</AuthContextProvider>
-		</div>
+		// <RouterProvider router={router} />
+		<BrowserRouter>
+			<Routes>
+				<Route path="/">
+					<Route
+						index
+						element={
+							<ProtectedRoute>
+								<Homepage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route path="login" element={<Login />} />
+					<Route path="signup" element={<Signup />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

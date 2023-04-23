@@ -4,7 +4,7 @@ import { SearchBar } from "./utlis/SearchBar";
 import { ChatsList } from "./utlis/ChatsList";
 export const Sidebar = () => {
 	return (
-		<div className='sidebar'>
+		<div className="sidebar">
 			<Navbar />
 			<SearchBar />
 			<ChatsList />

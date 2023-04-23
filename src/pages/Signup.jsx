@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { uploadImage } from "../services/firebase_storage";
-import { createUser } from "../services/firebase_database";
+import { uploadUserData } from "../services/firebase_database";
 import { signUp } from "../services/firebase_auth";
 import addAvatar from "../assets/addAvatar.png";
 
@@ -18,12 +18,12 @@ export const Signup = () => {
 
 	const [avatar, setAvatar] = useState();
 
-	const handleSubmit = async (e) => {
+	const handleSignup = async (e) => {
 		e.preventDefault();
 		const username = e.target[0].value;
 		const email = e.target[1].value;
 		const password = e.target[2].value;
-		const displayImg = avatar;
+		const displayImg = e.target[3].files[0];
 
 		if (username == "") {
 			setClientNameErr("Username can't be empty");
@@ -35,12 +35,10 @@ export const Signup = () => {
 			setClientEmailErr("Email can't be empty");
 		} else {
 			// Create an Account
-			const resAuth = await signUp(email, password);
+			const resAuth = await signUp(email, password, username);
 
 			// On Successful
 			if (typeof resAuth == "object") {
-				console.log(resAuth);
-
 				// [ ]: Implement Loading During Upload
 				// [ ]: Implement Delete Selected Image feature
 
@@ -50,8 +48,8 @@ export const Signup = () => {
 					console.log(`upload res - ${downloadURL}`); // true
 
 					// upload User Data
-					await createUser(resAuth.uid, username, email, downloadURL);
-					navigate("/home");
+					await uploadUserData(resAuth, email, username, downloadURL);
+					navigate("/");
 				}
 			} else {
 				setServerErr(resAuth);
@@ -69,7 +67,7 @@ export const Signup = () => {
 				<span className="auth_logo">Dope Chat</span>
 				<span className="auth_title">Sign-up</span>
 
-				<form className="form" onSubmit={handleSubmit}>
+				<form className="form" onSubmit={handleSignup}>
 					{/* Textfields */}
 					<input
 						type="text"
@@ -116,7 +114,7 @@ export const Signup = () => {
 				{/* Switch to Login */}
 				<p className="auth_switch">
 					Don't have an Account?{" "}
-					<Link className="switch_link" to="/log-in">
+					<Link className="switch_link" to="/login">
 						Log-in
 					</Link>
 				</p>

@@ -1,9 +1,16 @@
 // Import the functions you need from the SDKs you need
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { app } from "../services/firebase_init";
+import {
+	createUserWithEmailAndPassword,
+	updateProfile,
+	signInWithEmailAndPassword,
+	getAuth,
+	signOut,
+} from "firebase/auth";
 
-export const auth = getAuth();
+export const auth = getAuth(app);
 
-export const signUp = async (email, password) => {
+export const signUp = async (email, password, displayName) => {
 	try {
 		const userCreds = await createUserWithEmailAndPassword(
 			auth,
@@ -25,15 +32,50 @@ export const signUp = async (email, password) => {
 				errMsg = "Email is already in use";
 				break;
 			default:
-				errMsg = err.message.toString().length() >= 20 ?? err.message;
+				const temp = err.message.toString();
+				if (temp.length < 20) errMsg = temp;
 		}
 		console.log(errMsg);
 		return errMsg;
 	}
 };
 
-export function getCurrentUser() {
-	const currentUser = auth.currentUser;
-	console.log(currentUser);
-	return currentUser;
+export const login = async (email, password) => {
+	try {
+		const userCreds = await signInWithEmailAndPassword(auth, email, password);
+		const user = userCreds.user;
+		return user;
+	} catch (err) {
+		let errMsg = "Something went wrong";
+		switch (err.code) {
+			case "auth/user-not-found":
+				errMsg = "Email address not registered";
+				break;
+			case "auth/wrong-password":
+				errMsg = "Password is incorrect";
+				break;
+			default:
+				const temp = err.message.toString();
+				if (temp.length < 100) errMsg = temp;
+		}
+		console.log(errMsg);
+		return errMsg;
+	}
+};
+
+export function logout() {
+	signOut(auth);
 }
+
+// With the Auth Context Approach there shouldn't be a need for such a Function
+// export function getCurrentUser() {
+// 	try {
+// 		if (auth.currentUser === null || auth.currentUser === undefined) {
+// 			throw new Error("User doesn't exist");
+// 		}
+// 		console.log(auth.currentUser);
+// 		return auth.currentUser;
+// 	} catch (err) {
+// 		console.log(err.message);
+// 	}
+// }

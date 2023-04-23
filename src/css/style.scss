@@ -18,10 +18,6 @@
 		background-color: #fff;
 		border-radius: 10px;
 		padding: 20px 60px;
-		@include mobile {
-			width: 90%;
-			padding: 20px;
-		}
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -43,17 +39,11 @@
 			@include tablet {
 				width: 300px;
 			}
-			@include mobile {
-				width: 80%;
-			}
 			display: flex;
 			flex-direction: column;
 			gap: 15px;
 
 			&_field {
-				@include mobile {
-					width: 100%;
-				}
 				border: none;
 				padding: 20px 5px;
 				border-bottom: 1px solid $clr-accent-light;
@@ -126,11 +116,6 @@
 		border-radius: 16px;
 		overflow: hidden;
 
-		@include mobile {
-			width: 100%;
-			height: 100%;
-			border-radius: 0px;
-		}
 		@include tablet {
 			width: 90%;
 			height: 95%;
@@ -151,23 +136,21 @@
 			border-right: 1px solid $clr-dark;
 			flex: 1;
 			.navbar {
-				height: 50px;
 				display: flex;
-				padding: 40px 0px;
+				padding: 30px 20px;
+				min-height: 60px;
 				align-items: center;
+				justify-content: space-between;
 				color: $clr-text-light;
 				background-color: $clr-darker;
-				justify-content: space-around;
 				.logo {
 					font-weight: bold;
-					@include laptop {
+					@include notebook {
 						display: none;
 					}
 				}
-
 				.user {
 					display: flex;
-					justify-content: space-between;
 					gap: 10px;
 					span {
 						@include tablet {
@@ -180,26 +163,18 @@
 						width: 24px;
 						object-fit: cover;
 						border-radius: 50%;
-						@include mobile {
-							display: none;
-						}
 					}
-					button {
-						cursor: pointer;
-						border: none;
-						color: inherit;
-						font-size: 10px;
-						background-color: $clr-text;
-						@include mobile {
-							display: none;
-						}
-					}
+				}
+				.logout {
+					cursor: pointer;
+					border: none;
+					color: inherit;
+					font-size: 12px;
+					padding: 5px 20px;
+					background-color: $clr-text;
 				}
 			}
 			.search {
-				@include mobile {
-					display: none;
-				}
 				border-bottom: 1px solid $clr-gray;
 				.search-form {
 					input {
@@ -231,17 +206,9 @@
 					border-radius: 50%;
 					background-color: $clr-text-light;
 					object-fit: cover;
-					@include mobile {
-						height: 30px;
-						border-radius: 100%;
-						width: 30px;
-					}
 				}
 
 				.card-info {
-					@include mobile {
-						display: none;
-					}
 					span {
 						font-size: 18px;
 						font-weight: 500;
@@ -259,9 +226,6 @@
 			flex-direction: column;
 			align-items: stretch;
 			background-color: $clr-text-light;
-			@include mobile {
-				flex: 4;
-			}
 			.chat-info {
 				padding: 40px 10px;
 				height: 50px;
@@ -364,4 +328,12 @@
 			}
 		}
 	}
+}
+
+.error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
 }

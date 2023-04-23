@@ -4,13 +4,13 @@ import { Homepage } from "../pages/Homepage";
 import { createContext } from "react";
 import { getCurrentUser } from "../services/firebase_auth";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
 export const CheckAuth = () => {
-	const currentUser = useContext(AuthContext);
+	const currentUser = false;
 	const [isSignedIn, setIsSignedIn] = useState(false);
 	useEffect(() => {
-		if (currentUser) setIsSignedIn(true);
+		if (currentUser != null) setIsSignedIn(true);
 	}, []);
 
 	return isSignedIn ? <Homepage /> : <Signup />;
