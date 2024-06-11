@@ -1,4 +1,4 @@
-# chat-app
+# Chat App in MERN
 
 ## Description
 
