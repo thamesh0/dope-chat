@@ -1,0 +1,18 @@
+### react template
+.DS_*
+*.log
+logs
+dist/
+node_modules/
+bower_components/
+backup/
+**/*.backup.*
+**/*.back.*
+vite.config.ts
+
+
+*.sublime*
+psd
+thumb
+sketch
+

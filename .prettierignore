@@ -1,0 +1,12 @@
+### react template
+.DS_*
+*.log
+logs
+node_modules
+dist/
+backup
+
+**/*.backup.*
+**/*.back.*
+
+
