@@ -3,337 +3,339 @@
 @import "overlay-scrollbar";
 
 * {
-	font-family: $ff-primary;
+  font-family: $ff-primary;
 }
 
 // AUthpages CSS
 .auth_container {
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: $clr-accent-light;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $clr-accent-light;
 
-	.auth_wrapper {
-		background-color: #fff;
-		border-radius: 10px;
-		padding: 20px 60px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 20px;
+  .auth_wrapper {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 
-		.auth_logo {
-			color: $clr-text;
-			font-weight: bold;
-			font-size: $fz-title;
-		}
+    .auth_logo {
+      color: $clr-text;
+      font-weight: bold;
+      font-size: $fz-title;
+    }
 
-		.auth_title {
-			color: $clr-text;
-			font-size: $fz-subtitle;
-		}
+    .auth_title {
+      color: $clr-text;
+      font-size: $fz-subtitle;
+    }
 
-		.form {
-			width: 400px;
-			@include tablet {
-				width: 300px;
-			}
-			display: flex;
-			flex-direction: column;
-			gap: 15px;
+    .form {
+      width: 400px;
+      @include tablet {
+        width: 300px;
+      }
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
 
-			&_field {
-				border: none;
-				padding: 20px 5px;
-				border-bottom: 1px solid $clr-accent-light;
-				font-size: $fz-medium;
-				&::placeholder {
-					color: $clr-gray;
-				}
-				&:focus {
-					padding: 20px 15px;
-					border: 2px solid $clr-accent-light;
-					border-radius: 4px;
-					outline: 0 none;
-				}
-			}
-			&_avatar {
-				display: none;
-			}
+      &_field {
+        border: none;
+        padding: 20px 5px;
+        border-bottom: 1px solid $clr-accent-light;
+        font-size: $fz-medium;
+        &::placeholder {
+          color: $clr-gray;
+        }
+        &:focus {
+          padding: 20px 15px;
+          border: 2px solid $clr-accent-light;
+          border-radius: 4px;
+          outline: 0 none;
+        }
+      }
 
-			.avatar_label {
-				display: flex;
-				color: $clr-accent;
-				align-items: center;
-				gap: 10px;
-				img {
-					width: 32px;
-				}
-				span {
-					font-size: $fz-small;
-				}
-			}
-			&_button {
-				cursor: pointer;
-				font-weight: bold;
-				font-size: 1.3rem;
-				color: #fff;
-				padding: 10px;
-				background-color: $clr-primary;
-			}
-			&_error {
-				text-align: center;
-				color: $clr-error;
-			}
-			&_client_error {
-				text-align: start;
-				font-size: 12px;
-			}
-		}
-		.auth_switch {
-			color: $clr-text;
-			font-size: $fz-small;
-			.switch_link {
-				color: $clr-link;
-				text-decoration: none;
-			}
-		}
-	}
+      &_avatar {
+        display: none;
+      }
+
+      .avatar_label {
+        display: flex;
+        color: $clr-accent;
+        align-items: center;
+        gap: 10px;
+        img {
+          width: 32px;
+        }
+        span {
+          font-size: $fz-small;
+        }
+      }
+      &_button {
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: #fff;
+        padding: 10px;
+        background-color: $clr-primary;
+      }
+      &_error {
+        text-align: center;
+        color: $clr-error;
+      }
+      &_client_error {
+        text-align: start;
+        font-size: 12px;
+      }
+    }
+    .auth_switch {
+      color: $clr-text;
+      font-size: $fz-small;
+      .switch_link {
+        color: $clr-link;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 // Homepage css
 .home_container {
-	background-color: $clr-accent-light;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  background-color: $clr-accent-light;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	.home {
-		width: 65%;
-		height: 85%;
-		border-radius: 16px;
-		overflow: hidden;
+  .home {
+    width: 65%;
+    height: 85%;
+    border-radius: 16px;
+    overflow: hidden;
 
-		@include tablet {
-			width: 90%;
-			height: 95%;
-		}
-		@include laptop {
-			width: 90%;
-			height: 85%;
-		}
+    @include tablet {
+      width: 90%;
+      height: 95%;
+    }
+    @include laptop {
+      width: 90%;
+      height: 85%;
+    }
 
-		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-		display: flex;
-		.sidebar {
-			overflow-x: hidden;
-			overflow-y: scroll;
-			position: relative;
-			background-color: $clr-dark;
-			border-right: 1px solid $clr-dark;
-			flex: 1;
-			.navbar {
-				display: flex;
-				padding: 30px 20px;
-				min-height: 60px;
-				align-items: center;
-				justify-content: space-between;
-				color: $clr-text-light;
-				background-color: $clr-darker;
-				.logo {
-					font-weight: bold;
-					@include notebook {
-						display: none;
-					}
-				}
-				.user {
-					display: flex;
-					gap: 10px;
-					span {
-						@include tablet {
-							display: none;
-						}
-					}
-					img {
-						background-color: $clr-text-light;
-						height: 24px;
-						width: 24px;
-						object-fit: cover;
-						border-radius: 50%;
-					}
-				}
-				.logout {
-					cursor: pointer;
-					border: none;
-					color: inherit;
-					font-size: 12px;
-					padding: 5px 20px;
-					background-color: $clr-text;
-				}
-			}
-			.search {
-				border-bottom: 1px solid $clr-gray;
-				.search-form {
-					input {
-						font-size: 0.9rem;
-						background-color: transparent;
-						border: none;
-						outline: none;
-						color: $clr-text-light;
-						padding: 20px;
-						&::placeholder {
-							color: $clr-text-light;
-						}
-					}
-				}
-			}
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    display: flex;
+    .sidebar {
+      overflow-x: hidden;
+      overflow-y: scroll;
+      position: relative;
+      background-color: $clr-dark;
+      border-right: 1px solid $clr-dark;
+      flex: 1;
+      .navbar {
+        display: flex;
+        padding: 30px 20px;
+        min-height: 60px;
+        align-items: center;
+        justify-content: space-between;
+        color: $clr-text-light;
+        background-color: $clr-darker;
+        .logo {
+          font-weight: bold;
+          @include notebook {
+            display: none;
+          }
+        }
+        .user {
+          display: flex;
+          gap: 10px;
+          span {
+            @include tablet {
+              display: none;
+            }
+          }
+          img {
+            background-color: $clr-text-light;
+            height: 24px;
+            width: 24px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+        .logout {
+          cursor: pointer;
+          border: none;
+          color: inherit;
+          font-size: 12px;
+          padding: 5px 20px;
+          background-color: $clr-text;
+        }
+      }
+      .search {
+        border-bottom: 1px solid $clr-gray;
+        .search-form {
+          input {
+            font-size: 0.9rem;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: $clr-text-light;
+            padding: 20px;
+            &::placeholder {
+              color: $clr-text-light;
+            }
+          }
+        }
+      }
 
-			.chat-card {
-				&:hover {
-					background-color: $clr-darker;
-				}
-				display: flex;
-				align-items: center;
-				padding: 20px;
-				gap: 10px;
-				color: white;
-				img {
-					height: 40px;
-					width: 40px;
-					border-radius: 50%;
-					background-color: $clr-text-light;
-					object-fit: cover;
-				}
+      .chat-card {
+        &:hover {
+          background-color: $clr-darker;
+        }
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        gap: 10px;
+        color: white;
+        img {
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          background-color: $clr-text-light;
+          object-fit: cover;
+        }
 
-				.card-info {
-					span {
-						font-size: 18px;
-						font-weight: 500;
-					}
-					p {
-						font-size: 14px;
-					}
-				}
-			}
-		}
+        .card-info {
+          span {
+            font-size: 18px;
+            font-weight: 500;
+          }
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
 
-		.chat {
-			flex: 2.5;
-			display: flex;
-			flex-direction: column;
-			align-items: stretch;
-			background-color: $clr-text-light;
-			.chat-info {
-				padding: 40px 10px;
-				height: 50px;
-				background-color: $clr-text;
-				color: $clr-text-light;
-				font-size: 22px;
-				font-weight: bold;
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				.chat-icons {
-					display: flex;
-				}
-			}
+    .chat {
+      flex: 2.5;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      background-color: $clr-text-light;
+      .chat-info {
+        padding: 40px 10px;
+        height: 50px;
+        background-color: $clr-text;
+        color: $clr-text-light;
+        font-size: 22px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .chat-icons {
+          display: flex;
+        }
+      }
 
-			.msg-list {
-				padding: 10px;
-				overflow-y: scroll;
+      .msg-list {
+        padding: 10px;
+        overflow-y: scroll;
 
-				.msg-card {
-					color: #000;
-					display: flex;
-					gap: 20px;
-					.msg-info {
-						display: flex;
-						flex-direction: column;
-						gap: 20px;
-						font-size: 16px;
-						font-weight: 400;
-						color: gray;
-						img {
-							height: 40px;
-							width: 40px;
-							border-radius: 50%;
-							object-fit: cover;
-						}
-					}
+        .msg-card {
+          color: #000;
+          display: flex;
+          gap: 20px;
+          .msg-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-size: 16px;
+            font-weight: 400;
+            color: gray;
+            img {
+              height: 40px;
+              width: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
 
-					.msg-content {
-						color: black;
-						display: flex;
-						flex-direction: column;
-						max-width: 80%;
-						gap: 10px;
-						p {
-							background-color: white;
-							padding: 10px 20px;
-							border-radius: 0px 10px 10px 10px;
-							max-width: max-content;
-						}
-						img {
-							width: 50%;
-						}
-					}
+          .msg-content {
+            color: black;
+            display: flex;
+            flex-direction: column;
+            max-width: 80%;
+            gap: 10px;
+            p {
+              background-color: white;
+              padding: 10px 20px;
+              border-radius: 0px 10px 10px 10px;
+              max-width: max-content;
+            }
+            img {
+              width: 50%;
+            }
+          }
 
-					&.owner {
-						flex-direction: row-reverse;
-						.msg-content {
-							align-items: flex-end;
-							p {
-								color: white;
-								background-color: $clr-primary;
-								border-radius: 10px 0 10px 10px;
-							}
-						}
-					}
-				}
-			}
-			.msg-input {
-				margin-top: auto;
-				padding: 40px;
-				height: 50px;
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				background-color: white;
-				input {
-					width: 100%;
-					color: $clr-darker;
-					border: none;
-					outline: none;
-					font-size: 18px;
-					&::placeholder {
-						color: $clr-gray;
-					}
-				}
-				.send {
-					display: flex;
-					gap: 10px;
-					align-items: center;
-					padding: 20px;
-					justify-content: space-between;
-					button {
-						padding: 10px 15px;
-						border: none;
-						background-color: $clr-primary;
-						color: white;
-					}
-				}
-			}
-		}
-	}
+          &.owner {
+            flex-direction: row-reverse;
+            .msg-content {
+              align-items: flex-end;
+              p {
+                color: white;
+                background-color: $clr-primary;
+                border-radius: 10px 0 10px 10px;
+              }
+            }
+          }
+        }
+      }
+      .msg-input {
+        margin-top: auto;
+        padding: 40px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: white;
+        input {
+          width: 100%;
+          color: $clr-darker;
+          border: none;
+          outline: none;
+          font-size: 18px;
+          &::placeholder {
+            color: $clr-gray;
+          }
+        }
+        .send {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          padding: 20px;
+          justify-content: space-between;
+          button {
+            padding: 10px 15px;
+            border: none;
+            background-color: $clr-primary;
+            color: white;
+          }
+        }
+      }
+    }
+  }
 }
 
 .error {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
